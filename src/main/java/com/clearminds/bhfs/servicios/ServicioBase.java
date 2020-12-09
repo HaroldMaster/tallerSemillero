@@ -9,6 +9,14 @@ import com.clearminds.bhfs.excepciones.BDDException;
 public class ServicioBase {
 	private Connection conexion = null;
 
+	public Connection getConexion() {
+		return conexion;
+	}
+
+	public void setConexion(Connection conexion) {
+		this.conexion = conexion;
+	}
+
 	public void abrirConexion() throws BDDException {
 		conexion = ConexionBDD.obtenerConexion();
 	}
