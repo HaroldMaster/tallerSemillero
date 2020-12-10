@@ -9,5 +9,6 @@ public class DateUtil {
 		SimpleDateFormat formateador = new SimpleDateFormat(FORMATO_COMPLETO);
 		String fechaFormateada = formateador.format(date);
 		return fechaFormateada;
+		
 	}
 }

@@ -19,15 +19,17 @@ public class ServicioEstudiante extends ServicioBase {
 		// TODO Auto-generated method stub
 		super.cerrarConexion();
 	}
-	
-	public void insertarEstudiante(Estudiante estudiante) throws BDDException{
+
+	public void insertarEstudiante(Estudiante estudiante) throws BDDException {
 		abrirConexion();
-		System.out.println("Insertando Estudiante: " +estudiante);
+		System.out.println("Insertando Estudiante: " + estudiante);
 		Statement stmt = null;
 		try {
 			stmt = getConexion().createStatement();
-			String sql = "insert into estudiantes(nombre,apellido,edad,fecha_modificacion) values('"+estudiante.getNombre()+"','"+estudiante.getApellido()+"',"+estudiante.getEdad()+",'"+DateUtil.obtenerFecha(new Date())+"')";
-			System.out.println("Script: "+sql);
+			String sql = "insert into estudiantes(nombre,apellido,edad,fecha_modificacion) values('"
+					+ estudiante.getNombre() + "','" + estudiante.getApellido() + "'," + estudiante.getEdad() + ",'"
+					+ DateUtil.obtenerFecha(new Date()) + "')";
+			System.out.println("Script: " + sql);
 			stmt.executeUpdate(sql);
 			cerrarConexion();
 		} catch (SQLException e) {
@@ -35,17 +37,19 @@ public class ServicioEstudiante extends ServicioBase {
 			e.printStackTrace();
 			throw new BDDException("Error al insertar estudiante");
 		}
-		
+
 	}
-	
-	public void actualizarEstudiante(Estudiante estudiante) throws BDDException{
+
+	public void actualizarEstudiante(Estudiante estudiante) throws BDDException {
 		abrirConexion();
-		System.out.println("Actualizando Estudiante: " +estudiante);
+		System.out.println("Actualizando Estudiante: " + estudiante);
 		Statement stmt = null;
 		try {
 			stmt = getConexion().createStatement();
-			String sql="UPDATE estudiantes SET edad= "+estudiante.getEdad()+", nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"', fecha_modificacion='"+DateUtil.obtenerFecha(new Date())+"'" +" WHERE id="+estudiante.getId();
-			System.out.println("Script: "+sql);
+			String sql = "UPDATE estudiantes SET edad= " + estudiante.getEdad() + ", nombre='" + estudiante.getNombre()
+					+ "', apellido='" + estudiante.getApellido() + "', fecha_modificacion='"
+					+ DateUtil.obtenerFecha(new Date()) + "'" + " WHERE id=" + estudiante.getId();
+			System.out.println("Script: " + sql);
 			stmt.executeUpdate(sql);
 			cerrarConexion();
 		} catch (SQLException e) {
