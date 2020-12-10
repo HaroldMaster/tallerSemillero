@@ -2,6 +2,7 @@ package com.clearminds.bhfs.servicios;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import com.clearminds.bhfs.dtos.Estudiante;
 import com.clearminds.bhfs.excepciones.BDDException;
@@ -25,7 +26,7 @@ public class ServicioEstudiante extends ServicioBase {
 		Statement stmt = null;
 		try {
 			stmt = getConexion().createStatement();
-			String sql = "insert into estudiantes(nombre,apellido) values('"+estudiante.getNombre()+"','"+estudiante.getApellido()+"')";
+			String sql = "insert into estudiantes(nombre,apellido,edad,fecha_modificacion) values('"+estudiante.getNombre()+"','"+estudiante.getApellido()+"',"+estudiante.getEdad()+",'"+DateUtil.obtenerFecha(new Date())+"')";
 			System.out.println("Script: "+sql);
 			stmt.executeUpdate(sql);
 			cerrarConexion();
@@ -43,7 +44,7 @@ public class ServicioEstudiante extends ServicioBase {
 		Statement stmt = null;
 		try {
 			stmt = getConexion().createStatement();
-			String sql="UPDATE estudiantes SET  nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"'" +" WHERE id="+estudiante.getId();
+			String sql="UPDATE estudiantes SET edad= "+estudiante.getEdad()+", nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"', fecha_modificacion='"+DateUtil.obtenerFecha(new Date())+"'" +" WHERE id="+estudiante.getId();
 			System.out.println("Script: "+sql);
 			stmt.executeUpdate(sql);
 			cerrarConexion();

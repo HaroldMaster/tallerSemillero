@@ -26,9 +26,9 @@ public class ConexionBDD {
 	}
 
 	public static Connection obtenerConexion() throws BDDException {
-		String usuario;
+		 
 		try {
-			usuario = leerPropiedad("usuario");
+			String usuario = leerPropiedad("usuario");
 			String password = leerPropiedad("password");
 			String urlConexion = leerPropiedad("urlConexion");
 			// Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
